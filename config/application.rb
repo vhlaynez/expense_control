@@ -22,6 +22,7 @@ require 'rails/test_unit/railtie'
 Bundler.require(*Rails.groups)
 
 module ExpenseControl
+  # rubocop:disable Style/Documentation
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
@@ -36,4 +37,5 @@ module ExpenseControl
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
   end
+  # rubocop:enable Style/Documentation
 end
