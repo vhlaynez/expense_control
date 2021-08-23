@@ -6,7 +6,7 @@ env:
   CI: true
   # POSTGRES_USER: postgres
   # POSTGRES_PASSWORD: postgres
-  # POSTGRES_DB: expanse_control_db_test
+  # POSTGRES_DB: expense_control_db_test
   # POSTGRES_HOST: postgres://postgres:postgres@localhost:5432
 
 jobs:
