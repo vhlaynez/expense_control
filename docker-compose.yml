@@ -3,12 +3,12 @@ version: "3"
 services:
   web:
     build: .
-    container_name: expanse-control-rails
+    container_name: expense-control-rails
     ports: ["3000:3000"]
     tty: true
     stdin_open: true
     volumes:
-      - .:/expanse_control
+      - .:/expense_control/
     expose: ["3000"]
     environment:
       - PG_HOST=db
@@ -20,9 +20,9 @@ services:
 
   db:
     image: postgres:10.5
-    container_name: expanse-control-db
+    container_name: expense-control-db
     environment:
-      POSTGRES_DB: expanse_control_db
+      POSTGRES_DB: expense_control_db
       POSTGRES_PASSWORD: postgres
       POSTGRES_USER: postgres
     ports: ["5432:5432"]
