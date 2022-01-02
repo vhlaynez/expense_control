@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Class that deals with expenses data
 class ExpensesController < ApplicationController
   before_action :set_expenses, only: %i[index]
   before_action :set_expense, only: %i[show destroy update]
