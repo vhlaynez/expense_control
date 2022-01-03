@@ -4,10 +4,10 @@ on: [push, pull_request]
 env:
   RAILS_ENV: test
   CI: true
-  POSTGRES_USER: postgres
-  POSTGRES_PASSWORD: postgres
+  PG_USERNAME: postgres
+  PG_PASSWORD: postgres
   POSTGRES_DB: expense_control_db_test
-  POSTGRES_HOST: localhost
+  PG_HOST: localhost
 
 jobs:
   lint:
