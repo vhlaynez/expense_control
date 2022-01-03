@@ -33,6 +33,8 @@ class ExpensesController < ApplicationController
 
   def set_expense
     @expense = Expense.find params[:id]
+  rescue ActiveRecord::RecordNotFound
+    render json: { error_message: 'expense not found' }, status: :not_found
   end
 
   def expense_params
