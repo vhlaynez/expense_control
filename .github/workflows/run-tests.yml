@@ -24,3 +24,34 @@ jobs:
           bundle install
       - name: Check code
         run: bundle exec rubocop
+
+  test:
+    name: RSpec
+    needs: lint
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: expense_control_db_test
+        ports:
+          # Maps tcp port 5432 on service container to the host
+          - 5432:5432
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.7.2
+      # - name: Install postgres client
+      #   run: sudo apt-get install libpq-dev
+      - name: Install dependencies
+        run: |
+          gem install bundler
+          bundle install
+      # - name: Create database
+      #   run: |
+      #     rails db:create RAILS_ENV=test
+      #     rails db:migrate RAILS_ENV=test
+      - name: Run tests
+        run: rspec
