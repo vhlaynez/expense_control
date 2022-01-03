@@ -49,9 +49,9 @@ jobs:
         run: |
           gem install bundler
           bundle install
-      # - name: Create database
-      #   run: |
-      #     rails db:create RAILS_ENV=test
-      #     rails db:migrate RAILS_ENV=test
+      - name: Create database
+        run: |
+          rails db:create RAILS_ENV=test
+          rails db:migrate RAILS_ENV=test
       - name: Run tests
         run: rspec
