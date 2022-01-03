@@ -34,6 +34,31 @@ RSpec.describe ExpensesController, type: :request do
     end
   end
 
+  describe '#show' do
+    subject(:parsed_response) { JSON.parse(response.body) }
+
+    context 'when there are no expenses' do
+      it 'returns status code 404' do
+        get expense_path(1)
+        expect(response).to have_http_status(:not_found)
+      end
+    end
+
+    context 'when the expense exists' do
+      let(:expense) { create :expense }
+
+      before { get expense_path(expense.id) }
+
+      it 'returns status code 200' do
+        expect(response).to have_http_status(:ok)
+      end
+
+      it 'returns the expense body' do
+        expect(parsed_response['id']).to eq(expense.id)
+      end
+    end
+  end
+
   describe '#update' do
     context 'when the expense is not found' do
       it 'returns not found' do
